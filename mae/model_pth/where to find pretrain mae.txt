@@ -1,0 +1,1 @@
+You can use the paper (Masked Autoencoders Are Scalable Vision Learners) provided by making web site (https://github.com/facebookresearch/mae), Find the corresponding pre-trained vit-base weights
