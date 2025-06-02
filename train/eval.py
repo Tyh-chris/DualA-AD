@@ -22,8 +22,8 @@ from alert import GanAlert
 device='cuda' if torch.cuda.is_available() else 'cpu'
 
 type='ZhangLabData'
-save_path='output_dir/%s/train-1'%type
-model_path='output_dir/%s/train-1'%type
+save_path='output_dir/%s/result'%type
+model_path='output_dir/%s/result'%type
 # model_path='output_dir/%s/vit_base'%type
 if not os.path.exists(save_path):
     os.makedirs(save_path)
@@ -37,7 +37,7 @@ transform_test=transforms.Compose([
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
 
 
-datapath=os.path.join('/home/cquml/tyh/data/chest',type)
+datapath=os.path.join('../data/chest',type)
 dataset_train = datasets.ImageFolder(os.path.join(datapath,'train'), transform=transform_test)
 
 test_data= data_test(os.path.join(datapath,'test'))
