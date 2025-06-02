@@ -4,9 +4,9 @@
 
 Modify the dataset and the dataset path of train_two.py, and it can be run.
 
-步骤：
+Steps：
 
-1. 选择胸片数据集：
+1. choose dataset：
 
    ```
    type = 'ZhangLabData'  # chexpert， VinCXR
@@ -18,7 +18,7 @@ Modify the dataset and the dataset path of train_two.py, and it can be run.
    image_path = os.path.join('../data/chest', type)
    ```
 
-3. 运行train/train.py，可直接右击running
+3. run train/train.py，or You can directly right-click running
 
    ```
    python train.py
@@ -38,7 +38,7 @@ python eval.py
 2. Chexpert：https://github.com/tiangexiang/SQUID, it provides datasets uploaded to google drive(https://drive.google.com/file/d/14pEg9ch0fsice29O8HOjnyJ7Zg4GYNXM/view?usp=sharing
 3. VinCXR: https://github.com/caiyu6666/DDAD, it provides datasets Med-AD, including divided datasets.
 
-将图像放于../data/chest文件夹下，图像格式
+Place the image under the /data/chest folder, Image format:
 ```{
   "train": {
     "normal": ["*.png or *.png", ], # normal training images
@@ -50,3 +50,8 @@ python eval.py
   }
 }
 ```
+
+## MAE model
+
+You can use the paper (Masked Autoencoders Are Scalable Vision Learners) provided by making web site (https://github.com/facebookresearch/mae), Find the corresponding pre-trained vit-base weights. Then place the model in network/model_pth
+
