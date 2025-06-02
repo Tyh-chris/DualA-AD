@@ -5,9 +5,6 @@ from matplotlib import pyplot as plt
 from mpmath import diffs
 from torch.nn.modules.loss import _Loss
 import torch.nn.functional as F
-from torchmetrics.functional import cosine_similarity
-import seaborn as sns
-from mae.optim import vgg
 from torchvision import  models
 
 

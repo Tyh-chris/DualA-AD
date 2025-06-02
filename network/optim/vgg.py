@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torchvision
 
-from mae.optim.projectionvgg import ProjectionNet
+from network.optim.projectionvgg import ProjectionNet
 
 
 class VGGEncoder(nn.Module):
@@ -24,7 +24,7 @@ class VGGEncoder(nn.Module):
                 temp_seq = nn.Sequential()
 
     def getmodel(self):
-        modelname = '/home/cquml/tyh/workspace/mycode/Second/MAE_AB_3_CL/mae/model_pth/model-zhanglab-AnatPaste-vgg-best.tch'
+        modelname = '/home/cquml/tyh/workspace/mycode/Second/MAE_AB_3_CL/network/model_pth/model-zhanglab-AnatPaste-vgg-best.tch'
         # print(f"loading model {modelname}")
         head_layers = [512] * 1 + [128]
         # print(head_layers)

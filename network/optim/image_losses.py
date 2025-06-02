@@ -7,7 +7,7 @@ from torch.nn.modules.loss import _Loss
 from torchvision import transforms
 from skimage import color
 
-from mae.optim import vgg
+from network.optim import vgg
 
 
 class NCC:

@@ -4,7 +4,7 @@ import torch.nn as nn
 
 import torch.nn.functional as F
 
-from mae.gather import concat_all_gather
+from network.gather import concat_all_gather
 
 
 

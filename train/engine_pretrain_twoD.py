@@ -13,16 +13,13 @@ import sys
 import time
 from typing import Iterable
 import torchvision.transforms as transforms
-import matplotlib.pyplot as plt
-import numpy as np
 import torch
 from torch import nn
+import network.util.misc as misc
+import network.util.lr_sched as lr_sched
+from network.optim.cl_loss import CLLoss
+from network.optim.image_losses import PerceptualLoss
 
-import mae.util.misc as misc
-import mae.util.lr_sched as lr_sched
-from mae.optim.cl_loss import CLLoss
-from mae.optim.image_losses import PerceptualLoss
-from focal_frequency_loss import FocalFrequencyLoss as FFL
 
 def train_one_epoch(
         model: torch.nn.Module,

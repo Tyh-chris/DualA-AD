@@ -1,4 +1,3 @@
-import csv
 import time
 
 import numpy as np
@@ -8,15 +7,15 @@ from matplotlib import pyplot as plt
 from torch.utils.data import DataLoader
 from torchvision import datasets
 
-from mae import models_mae_fft
-from with_squid_D.dataset_chest import data_test
+from network import models_mae_fft
+from train.dataset_chest import data_test
 import torchvision.transforms as transforms
 from sklearn.metrics import roc_curve, auc
-from with_squid_D.engine_pretrain_D import unpatchify
+from train.engine_pretrain_D import unpatchify
 
 torch.set_printoptions(10)
 import os
-from discriminator import SimpleDiscriminator
+from network.discriminator import SimpleDiscriminator
 from alert import GanAlert
 
 

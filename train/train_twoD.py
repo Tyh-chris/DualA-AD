@@ -21,18 +21,16 @@ from torch.utils.tensorboard import SummaryWriter
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 import timm
-from with_squid_D.EvalIndicators import printScore, aucscores
+
 assert timm.__version__ == "0.3.2"  # version check
 import timm.optim.optim_factory as optim_factory
-import mae.util.misc as misc
-from mae.util.misc import NativeScalerWithGradNormCount as NativeScaler
-import mae.models_mae_fft as models_mae
+import network.util.misc as misc
+from network.util.misc import NativeScalerWithGradNormCount as NativeScaler
+import network.models_mae_fft as models_mae
 from engine_pretrain_twoD import train_one_epoch, unpatchify
-from discriminator import SimpleDiscriminator
+from network.discriminator import SimpleDiscriminator
 from alert import GanAlert
-# import matplotlib.pyplot as plt
 from dataset_chest import data_test
-from sklearn.metrics import roc_curve, auc
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -175,7 +173,7 @@ def main(args, type):
     model.to(device)
 
     # 加载vit imagenet权重
-    pretrained_weights = torch.load('../mae/model_pth/mae_pretrain_vit_base_imagenet.pth')['model']
+    pretrained_weights = torch.load('../network/model_pth/mae_pretrain_vit_base_imagenet.pth')['model']
     model_dict = model.state_dict()
     pretrained_dict = {k: v for k, v in pretrained_weights.items() if k in model_dict.keys()}
     model_dict.update(pretrained_dict)
