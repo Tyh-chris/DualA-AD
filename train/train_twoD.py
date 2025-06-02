@@ -36,7 +36,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
 def get_args_parser():
-    parser = argparse.ArgumentParser('MAE pre-training', add_help=False)
+    parser = argparse.ArgumentParser('chest anomaly detection', add_help=False)
     parser.add_argument('--batch_size', default=16, type=int,
                         help='Batch size per GPU (effective batch size is batch_size * accum_iter * # gpus')
     parser.add_argument('--epochs', default=300, type=int)
@@ -107,9 +107,11 @@ def get_args_parser():
 def main(args, type):
 
     misc.init_distributed_mode(args)
-    image_path = os.path.join('/home/cquml/tyh/data/chest', type)
-    args.output_dir = os.path.join(args.output_dir, 'train-1')
-    args.log_dir = os.path.join(args.log_dir, 'train-1')
+    # 图像路径，可自行修改
+    image_path = os.path.join('../data/chest', type)
+    # 结果保存路径
+    args.output_dir = os.path.join(args.output_dir, 'result')
+    args.log_dir = os.path.join(args.log_dir, 'result')
     if not os.path.exists(args.output_dir):
         os.mkdir(args.output_dir)
 
@@ -320,11 +322,10 @@ def val(dataloader, model, discriminator, opt, mask_ratio):
 if __name__ == '__main__':
     args = get_args_parser()
     args = args.parse_args()
+    # 选择胸片数据集
     type = 'ZhangLabData'
     # type = 'chexpert'
-    # type = 'RSNA'
     # type = 'VinCXR'
-    # type = 'OCT'
     args.output_dir = os.path.join(args.output_dir, type)
     args.log_dir = os.path.join(args.log_dir, type)
     if args.output_dir:
